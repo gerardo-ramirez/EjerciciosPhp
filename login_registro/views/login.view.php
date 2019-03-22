@@ -27,6 +27,16 @@
 <!-- el login es el que usamos en el name del formulario y la funcion submit es la propia del form
 lo que hacemos es activarla cuando se toque el icono  -->
 </div>
+
+<?php if(!empty($errores)) : ?>
+<div class="errores">
+<ul>
+<?php echo $errores?>
+
+</ul>
+</div>
+<?php endif ;?><!--Si usamos el if es necesario el endif-->
+
 </form>
 <p class="texto-registrate">
 ¿ Aún no tienes cuenta?

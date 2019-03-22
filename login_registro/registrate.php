@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         // hash es un metodo  hay otros ademas de 512 luego colocamos su password,
         $password2 = hash('sha512', $password2);
 
-        echo "$usuario .pass: $password . pass2: $password2";
+        //echo "$usuario .pass: $password . pass2: $password2";
         if($password != $password2){
             $errores .="<li> Las contraseñas no coinciden</li>";
         }

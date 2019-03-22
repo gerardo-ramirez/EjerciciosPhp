@@ -25,7 +25,7 @@
 <i class="icono izquierda fa fa-lock"></i><input type="password" name="password" class="password" placeholder="password">
 </div>
 <div class="form-group">
-<i class="icono izquierda fa fa-user"></i><input type="password" name="password2" class="password_btn" placeholder="reapet"><i class="submit_btn fa fa-arrow-right" onclick="login.submit()"></i>
+<i class="icono izquierda fa fa-lock"></i><input type="password" name="password2" class="password_btn" placeholder="repeat"><i class="submit_btn fa fa-arrow-right" onclick="login.submit()"></i>
 <!-- el login es el que usamos en el name del formulario y la funcion submit es la propia del form
 lo que hacemos es activarla cuando se toque el icono  -->
 </div>
