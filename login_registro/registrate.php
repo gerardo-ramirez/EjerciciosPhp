@@ -12,7 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $usuario= filter_var(strtolower($_POST['usuario']), FILTER_SANITIZE_STRING);
     $password= $_POST['password'] ;
     $password2=$_POST['password2'];
- 
+
+
+
+ //VALIDAMOS CONTRASEÑAS Y CREAMOS ERRORES:
    
     /*Aqui guardaremos los posibles errores que tengamos
     y si no los hay entonces estara todo corecto.*/ 
@@ -36,10 +39,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if($resultado != false){
             $errores .= "<li>El nombre ingresado ya existe.</li>";
         }
+        //Hasheamos nuestra contraseña para protegerla :
+        $password = hash('sha512', $password);
+        // hash es un metodo  hay otros ademas de 512 luego colocamos su password,
+        $password2 = hash('sha512', $password2);
 
-    }
+        echo "$usuario .pass: $password . pass2: $password2";
+        if($password != $password2){
+            $errores .="<li> Las contraseñas no coinciden</li>";
+        }
 
+
+
+    
 }
+//SI NO HAY ERRORES AGREGAMOS USUARIO:
+
+if(empty($errores)){
+    $statement= $conexion->prepare("INSERT INTO registrados (id,nombre,pass) values(NULL,:usuario,:password)");
+        $statement->execute(array(':usuario'=> $usuario, ':password'=> $password));
+//Y ENVIAMOS A LOGIN:
+    header('Location: login.php');
+    }
+} // =>Todo encerrado dentro de del condicional if($_SERVER['REQUEST_METHOD'] == 'POST')
+
+
+
+//CASO CONTRARIO REGISTRESE:
 require 'views/registrate.view.php';
 
 
